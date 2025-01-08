@@ -1,0 +1,19 @@
+name: Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  simple-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+    - name: Check version
+      run : |
+        /tmp/oaf -v
