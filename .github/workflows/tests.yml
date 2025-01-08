@@ -62,4 +62,6 @@ jobs:
       run : |
         echo Summary table of number of files per extension:
         echo
-        oafp data="." in=ls lsrecursive=true sql="select filepath, permissions, size where isFile=TRUE order by size desc" out=ctable
+        oafp data="." in=ls lsrecursive=true\
+             sql="select filepath, permissions, size where isFile=TRUE order by size desc"\
+             out=ctable
