@@ -21,6 +21,21 @@ jobs:
       run : |
         oaf -v
 
+  simple-test-with-dist:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+      with:
+        dist: nightly
+    - name: Check version
+      run : |
+        /tmp/oaf/oaf -v
+    - name: Check version with symlink
+      run : |
+        oaf -v
+
   oafp-test:
     runs-on: ubuntu-latest
     steps:
