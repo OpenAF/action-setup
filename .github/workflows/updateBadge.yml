@@ -1,0 +1,30 @@
+name: Update version badge
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  Update-Badge:
+    runs-on    : ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    name       : Update badge oJob
+    steps      :
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Update version badge
+      uses: openaf/ojob-action@v6
+      with:
+        ojob: '.github/ojobs/updateVerBadge.yaml'
+        
+    - name: Push
+      env:
+        GH_TOKEN: ${{ github.token }}
+      uses: openaf/ojob-action@v6
+      with:
+        ojob: "ojob.io/git/hub/contentIn"
+        args: "message=\"update badge\" paths=.github/ojobs/version.svg branch=\"${{ github.ref_name }}\""
