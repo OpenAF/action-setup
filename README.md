@@ -12,7 +12,7 @@ Example:
 
   - name: Using OpenAF
     run : |
-      echo Summary table of number of files per extension:
+      echo Recursize list of files order by size:
       echo
       oafp data="." in=ls lsrecursive=true sql="select filepath, permissions, size where isFile=TRUE order by size desc" out=ctable
 ```
