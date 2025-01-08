@@ -16,4 +16,4 @@ jobs:
       uses: ./
     - name: Check version
       run : |
-        /tmp/oaf -v
+        /tmp/oaf/oaf -v
