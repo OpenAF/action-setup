@@ -27,3 +27,12 @@ runs:
         java -jar openaf.jar --install
         cd $CDIR
       fi
+      sudo ln -s /tmp/oaf/oaf /usr/bin/oaf
+      sudo ln -s /tmp/oaf/oaf-sb /usr/bin/oaf-sb
+      sudo ln -s /tmp/oaf/oafp /usr/bin/oafp
+      sudo ln -s /tmp/oaf/oafp-sb /usr/bin/oafp-sb
+      sudo ln -s /tmp/oaf/ojob /usr/bin/ojob
+      sudo ln -s /tmp/oaf/ojob-sb /usr/bin/ojob-sb
+      sudo ln -s /tmp/oaf/opack /usr/bin/opack
+      sudo ln -s /tmp/oaf/openaf /usr/bin/openaf
+      sudo ln -s /tmp/oaf/openaf-sb /usr/bin/openaf-sb
