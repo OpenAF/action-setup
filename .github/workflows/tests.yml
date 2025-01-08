@@ -17,6 +17,9 @@ jobs:
     - name: Check version
       run : |
         /tmp/oaf/oaf -v
+    - name: Check version with symlink
+      run : |
+        oaf -v
 
   oafp-test:
     runs-on: ubuntu-latest
@@ -25,5 +28,8 @@ jobs:
     - name: Setup OpenAF
       uses: ./
     - name: Use oAFp
+      run : |
+        /tmp/oaf/oafp -v
+    - name: Use oAFp with symlink
       run : |
         /tmp/oaf/oafp -v
