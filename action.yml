@@ -28,7 +28,7 @@ runs:
         cd $CDIR
       fi
       for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb; do
-        echo "Creating /usr/bin/\$script..."
-        echo -e "#!/bin/sh\n/tmp/oaf/\$script \"\$@\"" | sudo tee /usr/bin/\$script > /dev/null
-        sudo chmod +x /usr/bin/\$script
+        echo "Creating /usr/bin/$script..."
+        echo -e "#!/bin/sh\n/tmp/oaf/$script \"\$@\"" | sudo tee /usr/bin/$script > /dev/null
+        sudo chmod +x /usr/bin/$script
       done
