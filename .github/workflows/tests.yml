@@ -48,3 +48,18 @@ jobs:
     - name: Use oAFp with symlink
       run : |
         oafp -v
+
+  readme-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+    - name: Show README
+      run : |
+        oafp README.md
+    - name: Run README test
+      run : |
+        echo Summary table of number of files per extension:
+        echo
+        oafp data="." in=ls lsrecursive=true sql="select filepath, permissions, size where isFile=TRUE order by size desc" out=ctable
