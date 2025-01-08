@@ -8,7 +8,7 @@ Example:
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1
+    uses: openaf/action-setup@v6
 
   - name: Using OpenAF
     run : |
