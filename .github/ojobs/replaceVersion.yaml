@@ -48,7 +48,7 @@ jobs:
       # Escape existing template entries
       "\\{\\{"                              : "\\{{"
       # Replace existing version with the tagVersion
-      "(mob-eng/risk-rca-ojob-action@)v\\d+": "$1{{tagVersion}}"
+      "(openaf/action-setup@)v\\d+": "$1{{tagVersion}}"
     #((inputFile )): README.md
     ((useRegExp )): true
 
