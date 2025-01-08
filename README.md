@@ -12,9 +12,11 @@ Example:
 
   - name: Using OpenAF
     run : |
-      echo Recursize list of files order by size:
+      echo Recursive list of files order by size:
       echo
-      oafp data="." in=ls lsrecursive=true sql="select filepath, permissions, size where isFile=TRUE order by size desc" out=ctable
+      oafp data="." in=ls lsrecursive=true\
+           sql="select filepath, permissions, size where isFile=TRUE order by size desc"\
+           out=ctable
 ```
 
 > Works together with https://github.com/OpenAF/ojob-action
