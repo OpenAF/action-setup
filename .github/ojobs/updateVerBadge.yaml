@@ -16,7 +16,7 @@ jobs:
 - name: Check tag version
   exec: |
     args.tagVersion = $from( 
-                        $rest().get("https://api.github.com/repos/openaf/ojob-action/releases") 
+                        $rest().get("https://api.github.com/repos/openaf/action-setup/releases") 
                       )
                       .sort("-published_at")
                       .at(0)
