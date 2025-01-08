@@ -33,7 +33,7 @@ jobs:
     ((out    ): args
   - name      : Badgen generate file
     args      :
-      label     : "openaf/ojob-action:"
+      label     : "openaf/action-setup:"
       labelColor: grey3
       color     : green
       icon      : openaf.svg
