@@ -17,3 +17,13 @@ jobs:
     - name: Check version
       run : |
         /tmp/oaf/oaf -v
+
+  oafp-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+    - name: Use oAFp
+      run : |
+        /tmp/oaf/oafp -v
