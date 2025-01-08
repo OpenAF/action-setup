@@ -47,4 +47,4 @@ jobs:
         /tmp/oaf/oafp -v
     - name: Use oAFp with symlink
       run : |
-        /tmp/oaf/oafp -v
+        oafp -v
