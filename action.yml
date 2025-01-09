@@ -25,7 +25,12 @@ runs:
         CDIR=`pwd`
         mkdir /tmp/oaf
         cd /tmp/oaf
-        curl https://openaf.io/${{ inputs.dist }}/openaf.jar.repacked -o openaf.jar
+        DIST=${{ inputs.dist }}
+        DIST=$(echo "$DIST" | xargs)
+        if [ "$DIST" = "stable" ]; then
+          DIST=""
+        fi
+        curl https://openaf.io/$DIST/openaf.jar.repacked -o openaf.jar
         java -jar openaf.jar --install
         cd $CDIR
       fi
