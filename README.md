@@ -46,4 +46,19 @@ To cache the OpenAF installation you can use [GitHub Actions caching](https://do
       path: /tmp/oaf
 ```
 
+### Using a different distribution
+
+By default the 'stable' OpenAF distribution is used but you can specify a different one using the _dist_ input:
+
+```yaml
+  - name: Setup OpenAF
+    uses: openaf/action-setup@v1.1
+    with:
+      dist: nightly
+
+  - name: Using OpenAF
+    run : |
+      echo "The current OpenAF distribution is '$(oaf -c 'print(getDistribution())')'"
+```
+
 > Works together with https://github.com/OpenAF/ojob-action
