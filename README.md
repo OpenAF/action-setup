@@ -61,4 +61,19 @@ By default the 'stable' OpenAF distribution is used but you can specify a differ
       echo "The current OpenAF distribution is '$(oaf -c 'print(getDistribution())')'"
 ```
 
+### Using a specific version
+
+By default the latest version of the defined (or stable) distribution will be retrived. To specify it you can use the _version_ input:
+
+```yaml
+  - name: Setup OpenAF
+    uses: openaf/action-setup@v1.1
+    with:
+      version: 20241117
+
+  - name: Using OpenAF
+    run : |
+      echo "The current OpenAF version is '$(oaf -c 'print(getVersion())')'"
+```
+
 > Works together with https://github.com/OpenAF/ojob-action

@@ -7,6 +7,9 @@ inputs:
   dist:
     description: 'The OpenAF distribution to use'
     required: false
+  version:
+    description: 'A specific OpenAF version to use'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -25,12 +28,20 @@ runs:
         CDIR=`pwd`
         mkdir /tmp/oaf
         cd /tmp/oaf
+
         DIST=${{ inputs.dist }}
         DIST=$(echo "$DIST" | xargs)
         if [ "$DIST" = "stable" ]; then
           DIST=""
         fi
-        curl https://openaf.io/$DIST/openaf.jar.repacked -o openaf.jar
+
+        VERSION=${{ inputs.version }}
+        VERSION=$(echo "$VERSION" | xargs)
+        if [ -z "$VERSION" ]; then
+          VERSION=""
+        fi
+        
+        curl https://openaf.io/$DIST/openaf$VERSION.jar.repacked -o openaf.jar
         java -jar openaf.jar --install
         cd $CDIR
       fi

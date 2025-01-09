@@ -65,3 +65,17 @@ jobs:
         oafp data="." in=ls lsrecursive=true\
              sql="select filepath, permissions, size where isFile=TRUE order by size desc"\
              out=ctable
+
+  dist-version-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+      with:
+        dist   : stable
+        version: 20241117
+    - name: Check OpenAF version and distribution
+      run : |
+        echo "The current OpenAF distribution is '$(oaf -c 'print(getDistribution())')'"
+        echo "The current OpenAF version is '$(oaf -c 'print(getVersion())')'"
