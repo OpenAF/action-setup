@@ -56,7 +56,7 @@ By default the 'stable' OpenAF distribution is used but you can specify a differ
     with:
       dist: nightly
 
-  - name: Using OpenAF
+  - name: Check OpenAF distribution
     run : |
       echo "The current OpenAF distribution is '$(oaf -c 'print(getDistribution())')'"
 ```
@@ -71,9 +71,24 @@ By default the latest version of the defined (or stable) distribution will be re
     with:
       version: 20241117
 
-  - name: Using OpenAF
+  - name: Check OpenAF version
     run : |
       echo "The current OpenAF version is '$(oaf -c 'print(getVersion())')'"
+```
+
+### Installing specific oPacks
+
+You can also list oPacks to be installed as part of the setup process:
+
+```yaml
+  - name: Setup OpenAF
+    uses: openaf/action-setup@v1.1
+    with:
+      opacks: oJob-common,GIST
+
+  - name: Check list of installed oPacks
+    run : |
+      opack list
 ```
 
 > Works together with https://github.com/OpenAF/ojob-action
