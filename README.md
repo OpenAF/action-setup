@@ -8,7 +8,7 @@ GitHub action to setup [OpenAF](https://docs.openaf.io).
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1.1
+    uses: openaf/action-setup@v1.2
 
   - name: Using OpenAF
     run : |
@@ -52,7 +52,7 @@ By default the 'stable' OpenAF distribution is used but you can specify a differ
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1.1
+    uses: openaf/action-setup@v1.2
     with:
       dist: nightly
 
@@ -67,7 +67,7 @@ By default the latest version of the defined (or stable) distribution will be re
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1.1
+    uses: openaf/action-setup@v1.2
     with:
       version: 20241117
 
@@ -82,7 +82,7 @@ You can also list oPacks to be installed as part of the setup process:
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1.1
+    uses: openaf/action-setup@v1.2
     with:
       opacks: oJob-common,GIST
 
