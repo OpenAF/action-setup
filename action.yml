@@ -1,5 +1,5 @@
 name: "OpenAF's setup action"
-description: "Setups OpenAF to be use in a GitHub action"
+description: "Setups OpenAF to use it on a GitHub action"
 branding:
   icon : 'command'
   color: 'black'
