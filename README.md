@@ -8,7 +8,7 @@ GitHub action to setup [OpenAF](https://docs.openaf.io).
 
 ```yaml
   - name: Setup OpenAF
-    uses: openaf/action-setup@v1.2.1
+    uses: openaf/action-setup@v1.2
 
   - name: Using OpenAF
     run : |
