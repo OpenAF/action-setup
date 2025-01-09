@@ -10,6 +10,9 @@ inputs:
   version:
     description: 'A specific OpenAF version to use'
     required: false
+  opacks:
+    description: 'A comma separated list of OpenAF public oPacks to pre-install'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -45,6 +48,17 @@ runs:
 
         curl https://openaf.io/$DIST/openaf$VERSION.jar.repacked -o openaf.jar
         java -jar openaf.jar --install
+
+        OPACKS=${{ inputs.opacks }}
+        OPACKS=$(echo "$OPACKS" | xargs)
+        if [ -n "$OPACKS" ]; then
+          IFS=',' read -ra PACKAGES <<< "$OPACKS"
+          for package in "${PACKAGES[@]}"; do
+            echo "Installing $package..."
+            /tmp/oaf/opack install "$package"
+          done
+        fi
+
         cd $CDIR
       fi
       for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb; do

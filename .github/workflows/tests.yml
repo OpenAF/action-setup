@@ -66,6 +66,18 @@ jobs:
              sql="select filepath, permissions, size where isFile=TRUE order by size desc"\
              out=ctable
 
+  opack-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF
+      uses: ./
+      with:
+        opacks: oJob-common,GIST
+    - name: List installed oPacks
+      run : |
+        opack list
+
   dist-version-test:
     runs-on: ubuntu-latest
     steps:
