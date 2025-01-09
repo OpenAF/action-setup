@@ -4,7 +4,7 @@
 
 GitHub action to setup [OpenAF](https://docs.openaf.io).
 
-Example:
+## Usage
 
 ```yaml
   - name: Setup OpenAF
@@ -17,6 +17,33 @@ Example:
       oafp data="." in=ls lsrecursive=true\
            sql="select filepath, permissions, size where isFile=TRUE order by size desc"\
            out=ctable
+```
+
+### Available commands
+
+After setup you will be able to use:
+
+| Command | Description |
+|---------|-------------|
+| oaf     | The main OpenAF runtime |
+| oafp    | The OpenAF data processor |
+| ojob    | The OpenAF's oJob orchestrator (although using [openaf/ojob-action](https://github.com/OpenAF/ojob-action) instead is recommended) |
+| opack   | The OpenAF's package manager |
+| oaf-sb  | The main OpenAF runtime unix she-bang executor |
+| ojob-sb | The OpenAF's oJob unix she-bang executor |
+| oafp-sb | The OpenAF data processor she-bang executor |
+
+### Caching
+
+To cache the OpenAF installation you can use [GitHub Actions caching](https://docs.github.com/en/actions/using-workflows/caching-dependencies-to-speed-up-workflows) (saving, at least, around ~4/5 seconds of action execution) but you will have to be carefull with the management of the cache. Example:
+
+```yaml
+  - name: Cache OpenAF
+    uses: actions/cache@v4
+    with:
+      # you need to manage the cache in the best way specifically for your case
+      key : oaf
+      path: /tmp/oaf
 ```
 
 > Works together with https://github.com/OpenAF/ojob-action
