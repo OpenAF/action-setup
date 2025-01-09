@@ -44,6 +44,9 @@ To cache the OpenAF installation you can use [GitHub Actions caching](https://do
       # you need to manage the cache in the best way specifically for your case
       key : oaf
       path: /tmp/oaf
+
+  - name: Setup OpenAF
+    uses: openaf/action-setup@v1.2
 ```
 
 ### Using a different distribution
