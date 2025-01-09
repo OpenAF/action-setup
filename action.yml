@@ -37,10 +37,12 @@ runs:
 
         VERSION=${{ inputs.version }}
         VERSION=$(echo "$VERSION" | xargs)
-        if [ -z "$VERSION" ]; then
+        if [ -n "$VERSION" ]; then
+          VERSION="-$VERSION"
+        else
           VERSION=""
         fi
-        
+
         curl https://openaf.io/$DIST/openaf$VERSION.jar.repacked -o openaf.jar
         java -jar openaf.jar --install
         cd $CDIR
