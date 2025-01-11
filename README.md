@@ -29,6 +29,7 @@ After setup you will be able to use:
 | oafp    | The OpenAF data processor |
 | ojob    | The OpenAF's oJob orchestrator (although using [openaf/ojob-action](https://github.com/OpenAF/ojob-action) instead is recommended) |
 | opack   | The OpenAF's package manager |
+| pyoaf   | The Python OpenAF extensions runner (if available) |
 | oaf-sb  | The main OpenAF runtime unix she-bang executor |
 | ojob-sb | The OpenAF's oJob unix she-bang executor |
 | oafp-sb | The OpenAF data processor she-bang executor |
