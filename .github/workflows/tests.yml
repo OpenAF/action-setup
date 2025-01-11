@@ -93,6 +93,18 @@ jobs:
       run : |
         opack list
 
+  multiple-actions:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup OpenAF (1)
+      uses: ./
+    - name: Setup OpenAF (2)
+      uses: ./
+    - name: Run test
+      run : |
+        oaf -v
+
   dist-version-test:
     runs-on: ubuntu-latest
     steps:
