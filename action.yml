@@ -62,7 +62,7 @@ runs:
         cd $CDIR
         fi
         for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb pyoaf; do
-          if [ ! -f /usr/bin/$script ] && [ ! -f /tmp/oaf/$script ]; then
+          if [ ! -f /usr/bin/$script ] && [ -f /tmp/oaf/$script ]; then
             echo "Creating /usr/bin/$script..."
             echo -e "#!/bin/sh\n/tmp/oaf/$script \"\$@\"" | sudo tee /usr/bin/$script > /dev/null
             sudo chmod +x /usr/bin/$script
