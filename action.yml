@@ -61,10 +61,31 @@ runs:
 
         cd $CDIR
         fi
-        for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb pyoaf; do
-          if [ ! -f /usr/bin/$script ] && [ -f /tmp/oaf/$script ]; then
-            echo "Creating /usr/bin/$script..."
-            echo -e "#!/bin/sh\n/tmp/oaf/$script \"\$@\"" | sudo tee /usr/bin/$script > /dev/null
-            sudo chmod +x /usr/bin/$script
+        # Check if sudo is available
+        if command -v sudo >/dev/null 2>&1 && sudo -n true 2>/dev/null; then
+          BIN_DIR="/usr/bin"
+          for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb pyoaf; do
+            if [ ! -f $BIN_DIR/$script ] && [ -f /tmp/oaf/$script ]; then
+              echo "Creating $BIN_DIR/$script..."
+              echo -e "#!/bin/sh\n/tmp/oaf/$script \"\$@\"" | sudo tee $BIN_DIR/$script > /dev/null
+              sudo chmod +x $BIN_DIR/$script
+            fi
+          done
+        else
+          # Use user's bin directory if sudo is not available
+          BIN_DIR="$HOME/.local/bin"
+          mkdir -p "$BIN_DIR"
+          for script in oaf oaf-sb oafp oafp-sb ojob ojob-sb opack openaf openaf-sb pyoaf; do
+            if [ ! -f $BIN_DIR/$script ] && [ -f /tmp/oaf/$script ]; then
+              echo "Creating $BIN_DIR/$script..."
+              echo -e "#!/bin/sh\n/tmp/oaf/$script \"\$@\"" > $BIN_DIR/$script
+              chmod +x $BIN_DIR/$script
+            fi
+          done
+          # Add bin dir to PATH via GITHUB_PATH if in GitHub Actions
+          if [ -n "$GITHUB_PATH" ]; then
+            echo "$BIN_DIR" >> $GITHUB_PATH
+            echo "Added $BIN_DIR to PATH"
           fi
-        done
+        fi
+
