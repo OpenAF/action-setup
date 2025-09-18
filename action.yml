@@ -26,7 +26,7 @@ runs:
   # -------------------------------
   - name : Check for OpenAF runtime
     shell: bash
-    run  : |
+    run  : | #js
       if [ ! -f /tmp/oaf/oaf ]; then
         CDIR=`pwd`
         mkdir /tmp/oaf
@@ -46,7 +46,13 @@ runs:
           VERSION=""
         fi
 
-        curl https://openaf.io/$DIST/openaf$VERSION.jar.repacked -o openaf.jar
+        # Build download URL without producing a double slash when DIST is empty
+        if [ -n "$DIST" ]; then
+          URL="https://openaf.io/$DIST/openaf$VERSION.jar.repacked"
+        else
+          URL="https://openaf.io/openaf$VERSION.jar.repacked"
+        fi
+        curl "$URL" -o openaf.jar
         java -jar openaf.jar --install
 
         OPACKS=${{ inputs.opacks }}
